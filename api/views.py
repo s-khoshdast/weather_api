@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.cache import cache
+from requests import HTTPError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -34,6 +35,11 @@ class WeatherView(APIView):
 
             return Response(weather_data, status=status.HTTP_200_OK)
         
-        except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except HTTPError as http_err:
+
+            ERROR_REASON = str(http_err.response.reason)
+            ERROR_STATUS_CODE = http_err.response.status_code
+
+
+            return Response({'error': ERROR_REASON}, status=ERROR_STATUS_CODE)
 
