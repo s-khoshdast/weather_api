@@ -2,11 +2,8 @@ from django.conf import settings
 import requests
 import yaml
 
-def fetch_weather_data(city_name):
+def fetch_weather_data(city_name, config):
     try:
-        with open(settings.API_CONFIG_FILE, 'r') as f:
-            config = yaml.load(f, Loader=yaml.FullLoader)
-        
         
         api_url = config.get('api_url', '')
         params = {

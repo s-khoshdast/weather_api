@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.core.cache import cache
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from api.services.weather_data import fetch_weather_data
 from .serializers import WeatherSerializer
+from api.services.weather_data import fetch_weather_data
+from api.services.data_loader import DataLoaderSingleton
 # Create your views here.
 
 class WeatherView(APIView):
@@ -13,7 +15,9 @@ class WeatherView(APIView):
             return Response({'error': 'Missing city_name parameter'}, status=status.HTTP_400_BAD_REQUEST)
 
         try:
-            data = fetch_weather_data(city_name)
+            data_loader = DataLoaderSingleton()
+            config = data_loader.config
+            data = fetch_weather_data(city_name, config)
             weather_serializer = WeatherSerializer(data)
             return Response(weather_serializer.data)
         except Exception as e:
