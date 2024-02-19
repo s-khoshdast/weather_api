@@ -17,9 +17,23 @@ class WeatherView(APIView):
         try:
             data_loader = DataLoaderSingleton()
             config = data_loader.config
+
+            lang = config.get('lang')
+            cache_time = config.get('cache_time')
+            
+            cache_key = f'{city_name}_{lang}'
+            
+            weather_data = cache.get(cache_key)
+            if weather_data is not None:
+                return Response(weather_data)
+            
             data = fetch_weather_data(city_name, config)
             weather_serializer = WeatherSerializer(data)
-            return Response(weather_serializer.data)
+            weather_data = weather_serializer.data
+            cache.set(cache_key, weather_data, int(cache_time) * 60)
+
+            return Response(weather_data, status=status.HTTP_200_OK)
+        
         except Exception as e:
-            return Response({'error': str(e)}, status=500)
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
