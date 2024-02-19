@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+from django.conf import settings
 from pathlib import Path
 import os
+import yaml
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -112,10 +114,22 @@ CACHES = {
     }
 }
 
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'), 
+]
+
+API_CONFIG_FILE = os.path.join(BASE_DIR, 'api', 'config.yaml')
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+with open(settings.API_CONFIG_FILE, 'r') as config_file:
+    config = yaml.safe_load(config_file)
+
+# Extract language code from config
+lang = config['lang'] 
+
+LANGUAGE_CODE = lang
 
 TIME_ZONE = 'UTC'
 
@@ -134,4 +148,3 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-API_CONFIG_FILE = os.path.join(BASE_DIR, 'api', 'config.yaml')
