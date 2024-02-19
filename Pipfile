@@ -9,6 +9,7 @@ djangorestframework = "*"
 pyyaml = "*"
 requests = "*"
 django-redis = "*"
+drf-spectacular = "*"
 
 [dev-packages]
 

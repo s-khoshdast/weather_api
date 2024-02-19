@@ -4,11 +4,21 @@ from requests import HTTPError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import WeatherSerializer
+from drf_spectacular.utils import extend_schema
+from .serializers import WeatherSerializer, MissingOrIvalidCityErrorSerializer, CityNotFoundErrorSerializer, InternalServerErrorSerializer
 from api.services.weather_data import fetch_weather_data
 from api.services.data_loader import DataLoaderSingleton
 # Create your views here.
 
+@extend_schema(
+    request=WeatherSerializer,
+    responses={
+        200: WeatherSerializer,
+        400: MissingOrIvalidCityErrorSerializer,
+        404: CityNotFoundErrorSerializer,
+        500: InternalServerErrorSerializer,
+    },
+)
 class WeatherView(APIView):
 
     def get(self, request, city_name):

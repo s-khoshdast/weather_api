@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'drf_spectacular',
     'api',
 ]
 
@@ -74,7 +75,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'weather_api.wsgi.application'
 
+REST_FRAMEWORK = {
+ 
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
 
+SPECTACULAR_SETTINGS = {
+    'OAS_VERSION': '3.1.0',
+    'TITLE': 'Weather API',
+    'DESCRIPTION': 'CheMondis Backend Code Challenge',
+    'VERSION': '0.0.1',
+    'CONTACT': {
+        'name': 'Sobhan Khoshdast',
+        'email': 'sobikhoschdasst@gmail.com',
+    }
+}
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
