@@ -21,7 +21,7 @@ from api.services.data_loader import DataLoaderSingleton
 )
 class WeatherView(APIView):
 
-    def get(self, request, city_name):
+    def get(self, request, city_name=None):
         if not city_name:
             return Response({'error': 'Missing city_name parameter'}, status=status.HTTP_400_BAD_REQUEST)
 
