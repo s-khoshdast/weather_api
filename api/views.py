@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from api.services.weather_data import fetch_weather_data
-
+from .serializers import WeatherSerializer
 # Create your views here.
 
 class WeatherView(APIView):
@@ -14,7 +14,8 @@ class WeatherView(APIView):
 
         try:
             data = fetch_weather_data(city_name)
-            return Response(data)
+            weather_serializer = WeatherSerializer(data)
+            return Response(weather_serializer.data)
         except Exception as e:
             return Response({'error': str(e)}, status=500)
 
