@@ -12,7 +12,7 @@ This repository houses the code for a **dynamic and feature-rich Django web appl
 -   **Configurable Caching:** Optimize performance by caching responses for 5, 10, or 60 minutes, balancing freshness and efficiency.
 -   **Multilingual Support:** Choose from English and two additional languages of your choice (e.g., English, French, German) for user-friendly experiences.
 -   **Robust Error Handling:** Gracefully handle unexpected situations, ensuring a seamless user experience even when faced with API errors or invalid requests.
--   **Modern Technologies:** Leverage the power of `Django`, `Django Rest Frameowkr`, `OpenWeatherMap API`.
+-   **Modern Technologies:** Leverage the power of `Django`, `Django Rest Framework`, `OpenWeatherMap API`.
 -   **Production-Ready:** Enjoy a well-structured architecture, clear documentation, and Docker Compose integration for effortless deployment.
 
 ## Installation
