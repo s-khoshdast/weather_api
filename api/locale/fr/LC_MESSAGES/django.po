@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-19 20:18+0100\n"
+"POT-Creation-Date: 2024-02-20 17:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: api/serializers.py:5
 msgid "City Name"
 msgstr "Nom de la ville"
@@ -84,3 +85,19 @@ msgstr "Ouest"
 #: api/serializers.py:24
 msgid "Northwest"
 msgstr "Nord-ouest"
+
+#: api/services/data_loader.py:13
+msgid "Invalid language specified in configuration"
+msgstr "Langue non valide spécifiée dans la configuration"
+
+#: api/services/data_loader.py:16
+msgid "Invalid cache time specified in configuration"
+msgstr "Temps de cache non valide spécifié dans la configuration"
+
+#: api/services/errors.py:13
+msgid "Internal Server Error"
+msgstr "Erreur de serveur interne"
+
+#: api/services/errors.py:32
+msgid "missed or invalid city_name argument."
+msgstr "argument city_name manquant ou invalide."
