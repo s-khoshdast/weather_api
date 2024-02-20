@@ -36,5 +36,4 @@ class WeatherSerializer(serializers.Serializer):
 
 class WeatherAPIErrorSerializer(serializers.Serializer):
     code = serializers.IntegerField()
-    message = serializers.CharField(max_length=255)
-    responseModel = serializers.CharField(max_length=255)
+    description = serializers.CharField(max_length=255)
