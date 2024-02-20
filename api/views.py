@@ -5,7 +5,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema
-from .serializers import WeatherSerializer, MissingOrIvalidCityErrorSerializer, CityNotFoundErrorSerializer, InternalServerErrorSerializer
+from .serializers import WeatherSerializer, WeatherAPIErrorSerializer
+from api.services.city_data import validate_city_name
+from api.services.errors import WeatherAPIError, WeatherAPIHTTPError, MissingCityError
 from api.services.weather_data import fetch_weather_data
 from api.services.data_loader import DataLoaderSingleton
 # Create your views here.
@@ -14,16 +16,19 @@ from api.services.data_loader import DataLoaderSingleton
     request=WeatherSerializer,
     responses={
         200: WeatherSerializer,
-        400: MissingOrIvalidCityErrorSerializer,
-        404: CityNotFoundErrorSerializer,
-        500: InternalServerErrorSerializer,
-    },
+        400: WeatherAPIErrorSerializer,
+        401: WeatherAPIErrorSerializer,
+        404: WeatherAPIErrorSerializer,
+        500: WeatherAPIErrorSerializer
+    }
+
 )
+
 class WeatherView(APIView):
 
     def get(self, request, city_name=None):
-        if not city_name:
-            return Response({'error': 'Missing city_name parameter'}, status=status.HTTP_400_BAD_REQUEST)
+        if not city_name or not validate_city_name(city_name):
+            return MissingCityError().to_response()
 
         try:
             data_loader = DataLoaderSingleton()
@@ -47,9 +52,6 @@ class WeatherView(APIView):
         
         except HTTPError as http_err:
 
-            ERROR_REASON = str(http_err.response.reason)
-            ERROR_STATUS_CODE = http_err.response.status_code
+            return WeatherAPIHTTPError(http_err).to_response()
 
-
-            return Response({'error': ERROR_REASON}, status=ERROR_STATUS_CODE)
 

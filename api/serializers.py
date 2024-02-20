@@ -34,13 +34,7 @@ class WeatherSerializer(serializers.Serializer):
         except Exception as e:
             raise e
 
-class MissingOrIvalidCityErrorSerializer(serializers.Serializer):
-    statusCode = serializers.IntegerField()
+class WeatherAPIErrorSerializer(serializers.Serializer):
+    code = serializers.IntegerField()
     message = serializers.CharField(max_length=255)
-class CityNotFoundErrorSerializer(serializers.Serializer):
-    statusCode = serializers.IntegerField()
-    message = serializers.CharField(max_length=255)
-
-class InternalServerErrorSerializer(serializers.Serializer):
-    statusCode = serializers.IntegerField()
-    message = serializers.CharField(max_length=255)
+    responseModel = serializers.CharField(max_length=255)
