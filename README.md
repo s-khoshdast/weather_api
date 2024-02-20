@@ -4,7 +4,7 @@ This submission is for the WeatherAPI backend code challenge from CheMondis.
 
 ## Overview
 
-...This repository houses the code for a **dynamic and feature-rich Django web application** that serves as a **current weather API**. This solution exceeds the requirements of the weather API coding challenge by providing a robust, well-structured, and easily deployable application.
+This repository houses the code for a **dynamic and feature-rich Django web application** that serves as a **current weather API**. This solution exceeds the requirements of the weather API coding challenge by providing a robust, well-structured, and easily deployable application.
 
 **Key Features:**
 
@@ -19,8 +19,9 @@ This submission is for the WeatherAPI backend code challenge from CheMondis.
 
  1. Clone the repository with command: `git clone https://github.com/s-khoshdast/weather_api.git`
  2. Enter the folder of code `cd weather_api`
- 3. Create a custom `apikey.yaml` file in the root folder of the project.
- 4. Run the multi-containers using `docker compose` with the following command: `docker compose up -d`
+ 4. Create a custom `apikey.yaml` file in the root folder of the project.
+ 5. For any custom language and caching time you can change the parameters in the `config.yaml` file.
+ 6. Run the multi-containers using `docker compose` with the following command: `docker compose up -d`
 
 ## Understanding the Code
 
