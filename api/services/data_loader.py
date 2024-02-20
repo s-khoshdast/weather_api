@@ -27,7 +27,7 @@ class DataLoaderSingleton:
         return cls._instance
     
     def load_data(self):
-            self._config = validate_config(settings.common.API_CONFIG_FILE)
+            self._config = validate_config(settings.API_CONFIG_FILE)
         
     @property
     def config(self):
