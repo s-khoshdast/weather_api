@@ -11,8 +11,11 @@ requests = "*"
 django-redis = "*"
 drf-spectacular = "*"
 gunicorn = "*"
+pytest = "*"
 
 [dev-packages]
+pytest = "*"
+pytest-django = "*"
 
 [requires]
 python_version = "3.11"
