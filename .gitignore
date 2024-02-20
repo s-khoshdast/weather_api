@@ -1,2 +1,3 @@
 config.yaml
 db.sqlite3
+general.log

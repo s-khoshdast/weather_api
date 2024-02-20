@@ -16,19 +16,11 @@ import os
 import yaml
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1+^re1g(0t3xh&==-cs%kg2fx(81&4$jxqcyn#ffpv627gv@*t'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -93,12 +85,6 @@ SPECTACULAR_SETTINGS = {
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -133,12 +119,12 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'), 
 ]
 
-API_CONFIG_FILE = os.path.join(BASE_DIR, 'api', 'config.yaml')
+API_CONFIG_FILE = os.path.join(BASE_DIR, 'config.yaml')
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-with open(settings.API_CONFIG_FILE, 'r') as config_file:
+with open(API_CONFIG_FILE, 'r') as config_file:
     config = yaml.safe_load(config_file)
 
 # Extract language code from config

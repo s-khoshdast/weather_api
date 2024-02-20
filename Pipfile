@@ -10,6 +10,7 @@ pyyaml = "*"
 requests = "*"
 django-redis = "*"
 drf-spectacular = "*"
+gunicorn = "*"
 
 [dev-packages]
 
