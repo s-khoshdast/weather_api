@@ -1,0 +1,4 @@
+api_url: https://api.openweathermap.org/data/2.5/weather
+units: metric
+lang: de # de and fr are supported too.
+cache_time: 5 # 5, 10 , 60 Minutes are supported too

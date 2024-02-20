@@ -1,3 +1,4 @@
+import os
 import yaml
 from django.conf import settings
 
@@ -7,6 +8,17 @@ def validate_config(config_file):
 
     with open(config_file, 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
+
+    try: 
+        # Load API key from apikey.yaml in the same directory as config_file
+        apikey_file = os.path.join(os.path.dirname(config_file), "apikey.yaml")
+        with open(apikey_file, 'r') as f:
+            api_key_data = yaml.load(f, Loader=yaml.FullLoader)
+
+        config['api_key'] = api_key_data['api_key']  # Assuming apikey.yaml contains a key named 'api_key'
+
+    except Exception as e:
+        raise e
 
     if config['lang'] not in valid_langs:
         raise ValueError("Invalid language specified in configuration")

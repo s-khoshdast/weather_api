@@ -1,4 +1,4 @@
-config.yaml
+apikey.yaml
 db.sqlite3
 general.log
 *.env
