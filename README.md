@@ -21,7 +21,7 @@ This repository houses the code for a **dynamic and feature-rich Django web appl
  2. Enter the folder of code `cd weather_api`
  4. Create a custom `apikey.yaml` file in the root folder of the project with following format: `api_key: API_KEY_FROM_OPENWEATHERMAP_API`
  5. For any custom language and caching time you can change the parameters in the `config.yaml` file.
- 6. Run the multi-containers using `docker compose` with the following command: `docker compose up -d`
+ 6. Run the multi-containers using `docker-compose` with the following command:  `docker-compose up -d --build`
 
 ## Usage
  1. Language and Cache time are configurable in config.yaml file
