@@ -46,4 +46,3 @@ This repository houses the code for a **dynamic and feature-rich Django web appl
 
 **Sobhan Khoshdast**
 E-Mail: sobikhoschdasst@gmail.com
-Mobile: +49 (0) 160 4540 - 602
