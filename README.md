@@ -23,6 +23,12 @@ This repository houses the code for a **dynamic and feature-rich Django web appl
  5. For any custom language and caching time you can change the parameters in the `config.yaml` file.
  6. Run the multi-containers using `docker compose` with the following command: `docker compose up -d`
 
+## Usage
+ 1. Language and Cache time are configurable in config.yaml file
+ 2. To Fetch data from the endpoin, just send a query to: `http://localhost:8000/api/weather/{city_name}`
+ 3. For Swagger documentation please visit following link: `http://localhost:8000/swagger`
+
+
 ## Understanding the Code
 
  - **Data Handling and Validation:**
@@ -46,4 +52,3 @@ This repository houses the code for a **dynamic and feature-rich Django web appl
 
 **Sobhan Khoshdast**
 E-Mail: sobikhoschdasst@gmail.com
-Mobile: +49 (0) 160 4540 - 602
